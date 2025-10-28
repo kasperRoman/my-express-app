@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Олег",
+    "phone": "+380931234567",
+    "password": "pass123"
+  },
+  {
+    "id": 2,
+    "name": "Ірина",
+    "phone": "+380671112233",
+    "password": "secure456"
+  },
+  {
+    "id": 3,
+    "name": "Андрій",
+    "phone": "+380501234567",
+    "password": "qwerty789"
+  },
+  {
+    "id": 4,
+    "name": "Марія",
+    "phone": "+380631234567",
+    "password": "hello321"
+  },
+  {
+    "id": 5,
+    "name": "Сергій",
+    "phone": "+380991234567",
+    "password": "admin999"
+  },
+  {
+    "id": 6,
+    "name": "Оновлений Андрій",
+    "phone": "+380501111111",
+    "password": "user000"
+  },
+  {
+    "id": 7,
+    "name": "Оновлений Андрій",
+    "phone": "+380501111111",
+    "password": "test111"
+  },
+  {
+    "id": 8,
+    "name": "Оксана",
+    "phone": "+380721234567",
+    "password": "abc12345"
+  },
+  {
+    "id": 9,
+    "name": "Дмитро",
+    "phone": "+380731234567",
+    "password": "pass777"
+  },
+  {
+    "id": 10,
+    "name": "Тетяна",
+    "phone": "+380741234567",
+    "password": "login888"
+  },
+  {
+    "name": "Петро",
+    "phone": "+380931234567",
+    "password": "pass123",
+    "id": 12
+  },
+  {
+    "name": "JJJ",
+    "phone": "+380931234567",
+    "password": "pass123",
+    "id": 13
+  },
+  {
+    "id": 14,
+    "name": "J",
+    "phone": "+380931234567",
+    "password": "pass123434"
+  },
+  {
+    "id": 15,
+    "name": "J",
+    "phone": "+380931234567",
+    "password": "pass123434"
+  },
+  {
+    "id": 16,
+    "name": "J",
+    "phone": "+380931234567",
+    "password": "pass123434"
+  },
+  {
+    "id": 17,
+    "name": "t",
+    "phone": "+380931234567",
+    "password": "pass123434"
+  },
+  {
+    "id": 18,
+    "name": "trdgf",
+    "phone": "+380933456767",
+    "password": "pass123434"
+  },
+  {
+    "id": 19,
+    "name": "kozak",
+    "phone": "+380933456767",
+    "password": "pass123434"
+  }
+]
