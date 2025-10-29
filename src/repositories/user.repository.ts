@@ -38,6 +38,14 @@ class UserRepository {
 
   }
 
+  public async update(user: IUser): Promise<void> {
+    const users = await read();
+    const index = users.findIndex(u => u.id === user.id);
+    if (index === -1) throw new Error("User not found in repository update");
+    users[index] = user;
+    await write(users);
+  }
+
 
 
 }

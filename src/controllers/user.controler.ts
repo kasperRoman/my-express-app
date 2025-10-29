@@ -21,24 +21,34 @@ export class UserController {
     }
   }
 
-  async getById(req: Request, res: Response, next: NextFunction){
-    try{
-      const id =Number(req.params.userId);
+  async getById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = Number(req.params.userId);
       const result = await userService.getById(id);
       res.json(result)
-    } catch (e){
+    } catch (e) {
       next(e);
     }
   }
 
-  async delete (req:Request ,res:Response,next:NextFunction){
-    try{
-      const id =parseInt(req.params.userId);
-       await userService.delete(id);
+  async delete(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = parseInt(req.params.userId);
+      await userService.delete(id);
       res.sendStatus(204);
+    } catch (e) {
+      next(e)
+    }
+  }
+  async update(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = Number(req.params.userId);
+      const updatedData = req.body;
+      await userService.update(id, updatedData);
+      res.status(200).json({ message: 'Користувача оновлено'})
 
-    }catch(e){
-
+    } catch (e) {
+      next(e)
     }
   }
 

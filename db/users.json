@@ -1,20 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Олег",
-    "phone": "+380931234567",
+    "name": "new Ivan",
+    "phone": "+380117777711",
     "password": "pass123"
   },
   {
-    "id": 2,
-    "name": "Ірина",
-    "phone": "+380671112233",
-    "password": "secure456"
-  },
-  {
     "id": 3,
-    "name": "Андрій",
-    "phone": "+380501234567",
+    "name": "new Ivan",
+    "phone": "+380511111111",
     "password": "qwerty789"
   },
   {
@@ -99,6 +93,12 @@
     "id": 19,
     "name": "kozak",
     "phone": "+380933456767",
+    "password": "pass123434"
+  },
+  {
+    "id": 20,
+    "name": "kozak",
+    "phone": "+380933456787",
     "password": "pass123434"
   }
 ]

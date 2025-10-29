@@ -1,9 +1,11 @@
 
 import { ApiError } from "../errors/api-error";
 import { CreateUserDto } from "../interfaces/createUserDto.interface";
+import { UpdateUserDto } from "../interfaces/updateUserDto";
 import { IUser } from "../interfaces/user.interface";
 import { userRepository } from "../repositories/user.repository";
-import { validateCreateUser } from "../validations/user.validation";
+import { UserValidator } from "../validations/user.validation";
+
 
 
 
@@ -13,7 +15,7 @@ class UserService {
     }
     public async create(dto: CreateUserDto): Promise<IUser> {
 
-      validateCreateUser(dto)
+     UserValidator.validateCreateDto(dto) 
 
     //  Перевірка унікальності телефону
     const existingUsers = await userRepository.getList();
@@ -46,6 +48,26 @@ class UserService {
     }
     return user
   }
+    public async update (id:number,updateData:UpdateUserDto):Promise<void>{
+ 
+      UserValidator.validateUpdateDto(updateData)
+
+     const users = await userRepository.getList();
+     const index = users.findIndex(u=>u.id === id);
+     if(index === -1){
+      throw new ApiError("User not found",404)
+     }
+     const user =users[index];
+         const updatedUser: IUser = {
+      ...user,
+      name: updateData.name ?? user.name,
+      phone: updateData.phone ?? user.phone,
+      password: updateData.password ?? user.password
+    };
+     await  userRepository.update(updatedUser)
+
+    }
+
 }
 
 export const userService = new UserService();
