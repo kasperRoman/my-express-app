@@ -45,7 +45,7 @@ export class UserController {
       const id = Number(req.params.userId);
       const updatedData = req.body;
       await userService.update(id, updatedData);
-      res.status(200).json({ message: 'Користувача оновлено'})
+      res.status(200).json({ message: 'Користувача оновлено' })
 
     } catch (e) {
       next(e)

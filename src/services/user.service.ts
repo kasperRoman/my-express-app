@@ -10,12 +10,12 @@ import { UserValidator } from "../validations/user.validation";
 
 
 class UserService {
-    public async getList():Promise<IUser[]>{
-        return await userRepository.getList();
-    }
-    public async create(dto: CreateUserDto): Promise<IUser> {
+  public async getList(): Promise<IUser[]> {
+    return await userRepository.getList();
+  }
+  public async create(dto: CreateUserDto): Promise<IUser> {
 
-     UserValidator.validateCreateDto(dto) 
+    UserValidator.validateCreateDto(dto)
 
     //  Перевірка унікальності телефону
     const existingUsers = await userRepository.getList();
@@ -34,39 +34,39 @@ class UserService {
 
     return await userRepository.create(newUser);
   }
-  public async getById(id:number):Promise<IUser>{
-    const user =await userRepository.getById(id);
-    if(!user){
-      throw new ApiError("User not found",404)
+  public async getById(id: number): Promise<IUser> {
+    const user = await userRepository.getById(id);
+    if (!user) {
+      throw new ApiError("User not found", 404)
     }
     return user
   }
-  public async delete (id:number):Promise<IUser>{
-    const user =  await userRepository.delete(id);
-    if (!user){
-      throw new ApiError("User not found",404)
+  public async delete(id: number): Promise<IUser> {
+    const user = await userRepository.delete(id);
+    if (!user) {
+      throw new ApiError("User not found", 404)
     }
     return user
   }
-    public async update (id:number,updateData:UpdateUserDto):Promise<void>{
- 
-      UserValidator.validateUpdateDto(updateData)
+  public async update(id: number, updateData: UpdateUserDto): Promise<void> {
 
-     const users = await userRepository.getList();
-     const index = users.findIndex(u=>u.id === id);
-     if(index === -1){
-      throw new ApiError("User not found",404)
-     }
-     const user =users[index];
-         const updatedUser: IUser = {
+    UserValidator.validateUpdateDto(updateData)
+
+    const users = await userRepository.getList();
+    const index = users.findIndex(u => u.id === id);
+    if (index === -1) {
+      throw new ApiError("User not found", 404)
+    }
+    const user = users[index];
+    const updatedUser: IUser = {
       ...user,
       name: updateData.name ?? user.name,
       phone: updateData.phone ?? user.phone,
       password: updateData.password ?? user.password
     };
-     await  userRepository.update(updatedUser)
+    await userRepository.update(updatedUser)
 
-    }
+  }
 
 }
 
