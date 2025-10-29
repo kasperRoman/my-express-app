@@ -20,6 +20,28 @@ export class UserController {
       next(e);
     }
   }
+
+  async getById(req: Request, res: Response, next: NextFunction){
+    try{
+      const id =Number(req.params.userId);
+      const result = await userService.getById(id);
+      res.json(result)
+    } catch (e){
+      next(e);
+    }
+  }
+
+  async delete (req:Request ,res:Response,next:NextFunction){
+    try{
+      const id =parseInt(req.params.userId);
+       await userService.delete(id);
+      res.sendStatus(204);
+
+    }catch(e){
+
+    }
+  }
+
 }
 
 export const userController = new UserController();

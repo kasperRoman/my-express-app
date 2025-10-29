@@ -12,9 +12,6 @@ const app = express();
 app.use(express.json())
 
 
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Привіт, Express!');
-// });
 app.use("/users",userRouter)
 
 
