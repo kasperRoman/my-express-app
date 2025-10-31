@@ -1,12 +1,11 @@
 import express, { NextFunction } from 'express'
-import dotenv from 'dotenv'
-
 import { Request, Response } from 'express';
 import { ApiError } from './errors/api-error';
 import { userRouter } from './routers/user.router';
+import { config } from './configs/config';
 
 
-dotenv.config()
+
 const app = express();
 
 app.use(express.json())
@@ -30,8 +29,8 @@ process.on("unhandledRejection", (reason) => {
   console.error(" Unhandled Rejection:", reason);
   process.exit(1);
 });
-const PORT = process.env.PORT;
 
-app.listen(PORT, () => {
-  console.log(`Сервер працює на http://localhost:${PORT}`);
+
+app.listen(config.port, () => {
+  console.log(`Сервер працює на http://localhost:${config.port}`);
 });
