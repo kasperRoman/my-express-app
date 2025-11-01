@@ -1,5 +1,6 @@
 import express, { NextFunction } from 'express'
 import { Request, Response } from 'express';
+import mongoose from 'mongoose';
 import { ApiError } from './errors/api-error';
 import { userRouter } from './routers/user.router';
 import { config } from './configs/config';
@@ -31,6 +32,7 @@ process.on("unhandledRejection", (reason) => {
 });
 
 
-app.listen(config.port, () => {
+app.listen(config.port, async() => {
+  await mongoose.connect(config.mongoUri);
   console.log(`Сервер працює на http://localhost:${config.port}`);
 });

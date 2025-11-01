@@ -1,6 +1,15 @@
-export interface IUser  {
-  id: number;
+export interface IUser {
+  _id: string;
   name: string;
-  phone: string;
-  password:string
+  email: string;
+  age: Number;
+  password: string
+  role: string;
+  phone?: string;
+  isDeleted: boolean;
+  isVerified: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 };
+
+export type IUserDto = Pick<IUser, "name" | "email" | "password">;

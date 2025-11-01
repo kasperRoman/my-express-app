@@ -23,7 +23,7 @@ export class UserController {
 
   async getById(req: Request, res: Response, next: NextFunction) {
     try {
-      const id = Number(req.params.userId);
+      const id = req.params.userId;
       const result = await userService.getById(id);
       res.json(result)
     } catch (e) {
@@ -31,22 +31,22 @@ export class UserController {
     }
   }
 
-  async delete(req: Request, res: Response, next: NextFunction) {
+  async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const id = parseInt(req.params.userId);
-      await userService.delete(id);
-      res.sendStatus(204);
+      const id = req.params.userId;
+      const updatedData = req.body;
+      const updateUser = await userService.update(id, updatedData);
+      res.status(200).json(updateUser)
     } catch (e) {
       next(e)
     }
   }
-  async update(req: Request, res: Response, next: NextFunction) {
-    try {
-      const id = Number(req.params.userId);
-      const updatedData = req.body;
-      await userService.update(id, updatedData);
-      res.status(200).json({ message: 'Користувача оновлено' })
 
+  async delete(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = req.params.userId;
+      const deletedUser = await userService.delete(id);
+      res.status(200).json(deletedUser)
     } catch (e) {
       next(e)
     }

@@ -1,52 +1,26 @@
+import { IUser, IUserDto } from "../interfaces/user.interface";
+import { User } from "../models/user.module";
 
-import { CreateUserDto } from "../interfaces/createUserDto.interface";
-import { IUser } from "../interfaces/user.interface";
-import { read, write } from "../services/fs.service";
 
 class UserRepository {
   public async getList(): Promise<IUser[]> {
-    return await read();
+    return await User.find();
   }
 
-  public async create(dto: CreateUserDto): Promise<IUser> {
-    const users = await read();
-    const newUser = {
-      id: users.length ? users[users.length - 1].id + 1 : 1,
-      name: dto.name,
-      phone: dto.phone,
-      password: dto.password
-    };
-    users.push(newUser);
-    await write(users)
-    return newUser
+  public async create(dto: IUserDto): Promise<IUser> {
+    return await User.create(dto)
   }
 
-  public async getById(id: number): Promise<IUser | null> {
-    const users = await read();
-    const user = users.find(u => u.id === id);
-    return user ?? null
-
+  public async getById(id: string): Promise<IUser | null> {
+    return await User.findById(id)
+  }
+  public async update(id: string, updatedData: IUserDto): Promise<IUser | null> {
+    return await User.findByIdAndUpdate(id, updatedData, { new: true })
   }
 
-  public async delete(id: number): Promise<IUser | null> {
-    const users = await read();
-    const index = users.findIndex(u => u.id === id);
-    if (index === -1) return null;
-    const [deletedUser] = users.splice(index, 1);
-    await write(users);
-    return deletedUser;
-
+  public async delete(id: string): Promise<IUser | null> {
+    return await User.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
   }
-
-  public async update(user: IUser): Promise<void> {
-    const users = await read();
-    const index = users.findIndex(u => u.id === user.id);
-    if (index === -1) throw new Error("User not found in repository update");
-    users[index] = user;
-    await write(users);
-  }
-
-
 
 }
 

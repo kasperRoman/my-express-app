@@ -3,9 +3,9 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 export const config ={
-    port: process.env.PORT ,
+    port: process.env.PORT || 3002 ,
 
-    mongoUrl: process.env.MONGO_DB_URL
+    mongoUri: process.env.MONGO_DB_URL ||""
 
 
 
