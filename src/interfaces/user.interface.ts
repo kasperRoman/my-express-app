@@ -12,4 +12,5 @@ export interface IUser {
   updatedAt: Date;
 };
 
-export type IUserDto = Pick<IUser, "name" | "email" | "password">;
+export type IUserCreateDto = Pick<IUser, "name" | "email" | "password" | "phone">;
+export type IUserUpdateDto = Partial<Pick<IUser , "name" | "age" | "phone">>

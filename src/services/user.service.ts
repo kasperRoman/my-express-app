@@ -1,5 +1,5 @@
 import { ApiError } from "../errors/api-error";
-import { IUser, IUserDto } from "../interfaces/user.interface";
+import { IUser, IUserCreateDto, IUserUpdateDto  } from "../interfaces/user.interface";
 import { userRepository } from "../repositories/user.repository";
 
 
@@ -9,7 +9,7 @@ class UserService {
     return await userRepository.getList();
   }
 
-  public async create(dto: IUserDto): Promise<IUser> {
+  public async create(dto: IUserCreateDto ): Promise<IUser> {
     return await userRepository.create(dto);
   }
 
@@ -21,7 +21,7 @@ class UserService {
     return user
   }
 
-  public async update(id: string, updatedData: IUserDto): Promise<IUser> {
+  public async update(id: string, updatedData: IUserUpdateDto): Promise<IUser> {
     const updatedUser = await userRepository.update(id, updatedData)
     if (!updatedUser) {
       throw new ApiError("User not found ,", 404)
