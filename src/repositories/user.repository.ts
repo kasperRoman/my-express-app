@@ -14,6 +14,9 @@ class UserRepository {
   public async getById(id: string): Promise<IUser | null> {
     return await User.findById(id)
   }
+  public async getByEmail(email: string): Promise<IUser | null> {
+    return await User.findOne({email})
+  }
   public async update(id: string, updatedData: IUserUpdateDto): Promise<IUser | null> {
     return await User.findByIdAndUpdate(id, updatedData, { new: true })
   }
@@ -21,6 +24,7 @@ class UserRepository {
   public async delete(id: string): Promise<IUser | null> {
     return await User.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
   }
+
 
 }
 
